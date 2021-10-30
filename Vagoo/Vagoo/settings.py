@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'location_field.apps.DefaultConfig',
     'entities.apps.EntitiesConfig',
+    'perception.apps.PerceptionConfig',
 ]
 
 MIDDLEWARE = [
