@@ -30,5 +30,5 @@ class SongPerception(CommonFields):
     entity = models.ForeignKey('entities.Song', on_delete=CASCADE, verbose_name='ترانه')
 
 
-class JourneyPerception(models.Model):
+class JourneyPerception(CommonFields):
     entity = models.ForeignKey('entities.Journey', on_delete=CASCADE, verbose_name='سفر')
