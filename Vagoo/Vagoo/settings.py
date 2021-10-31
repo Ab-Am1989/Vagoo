@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'location_field.apps.DefaultConfig',
     'entities.apps.EntitiesConfig',
     'perception.apps.PerceptionConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
