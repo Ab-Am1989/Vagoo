@@ -59,6 +59,7 @@ class Movie(models.Model):
     ]
 
     genre = models.IntegerField('سبک', choices=genre_choices)
+    image = models.ImageField('پوستر فیلم', upload_to='entities/films', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -124,6 +125,7 @@ class Book(models.Model):
         (OTHERS, 'سایر'),
     ]
     subject = models.IntegerField('موضوع', choices=subject_choices)
+    image = models.ImageField('طرح روی جلد کتاب', upload_to='entities/books', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -132,12 +134,13 @@ class Book(models.Model):
 class Song(models.Model):
     class Meta:
         verbose_name = 'ترانه'
-        verbose_name = 'ترانه'
+        verbose_name_plural = 'ترانه'
 
     name = models.CharField('نام اثر', max_length=200)
     singer = models.CharField('خواننده', max_length=150)
     composer = models.CharField('آهنگساز', max_length=150)
     songwriter = models.CharField('ترانه‌سرا', max_length=150)
+    image = models.ImageField('پوستر آلبوم یا ترانه', upload_to='entities/songs', blank=True, null=True)
 
     # language: add this field later
 
@@ -155,9 +158,27 @@ class Theater(models.Model):
     scriptwriter = models.CharField('نمایشنامه‌نویس', max_length=150)
     genre_choices = Movie.genre_choices
     genre = models.IntegerField('ژانر', choices=genre_choices)
+    image = models.ImageField('پوستر تئاتر', upload_to='entities/theater', blank=True, null=True)
 
     def __str__(self):
         return self.name
+
+
+class JourneyImages(models.Model):
+    class Meta:
+        verbose_name = 'عکس سفر'
+        verbose_name_plural = 'عکس سفر'
+
+    image_name = models.CharField('نام عکس', max_length=100)
+    image = models.ImageField(upload_to='upload_to_gallery')
+    journey = models.ForeignKey('Journey', on_delete=models.CASCADE)
+    default = models.BooleanField('تصویر پیش‌فرض', default=False)
+
+    def __str__(self):
+        return self.image_name
+
+    def upload_to_gallery(self, filename):
+        return f"entities/journeys/{self.journey.title}/filename"
 
 
 class Journey(models.Model):
