@@ -2,6 +2,8 @@ from django.db import models
 import datetime
 # from django.contrib.gis.db import models
 from location_field.models.plain import PlainLocationField
+from languages.fields import LanguageField
+from django.urls import reverse
 
 
 def year_choices():
@@ -63,6 +65,9 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.name
+
+    # def get_absolute_url(self):
+    #     return reverse('entities:movie_details', args=[self.id])
 
 
 class Book(models.Model):

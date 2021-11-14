@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'entities.apps.EntitiesConfig',
     'perception.apps.PerceptionConfig',
     'accounts.apps.AccountsConfig',
+    'languages',
 ]
 
 MIDDLEWARE = [
