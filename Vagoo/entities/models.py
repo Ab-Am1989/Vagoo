@@ -4,10 +4,11 @@ import datetime
 from location_field.models.plain import PlainLocationField
 from languages.fields import LanguageField
 from django.urls import reverse
+import pycountry
 
 
 def year_choices():
-    return [(r, r) for r in range(1984, datetime.date.today().year + 1)]
+    return [(r, r) for r in range(1884, datetime.date.today().year + 1)]
 
 
 def current_year():
@@ -66,8 +67,8 @@ class Movie(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_absolute_url(self):
-    #     return reverse('entities:movie_details', args=[self.id])
+    def get_absolute_url(self):
+        return reverse('entities:movies_details', args=[self.id])
 
 
 class Book(models.Model):
@@ -79,6 +80,7 @@ class Book(models.Model):
     name = models.CharField('نام کتاب', max_length=150)
     author = models.CharField('نویسنده', max_length=150)
     publisher = models.CharField('انتشارات', max_length=100)
+    isbn = models.CharField('شابک', max_length=13)
 
     LITERATURE = 1
     MYTHICAL = 2

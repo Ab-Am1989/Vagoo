@@ -127,9 +127,16 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOCATION_FIELD_PATH = STATIC_URL + 'location_field'
+
 LOCATION_FIELD = {
+    'map.provider': 'google',
+    'map.zoom': 13,
+
+    'search.provider': 'google',
+    'search.suffix': '',
     'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
-    'provider.google.api_key': 'AIzaSyAtfLqbtLfeTCo4qlqpFl1J08exoTq0w8w',
+    'provider.google.api_key': '',  # AIzaSyAtfLqbtLfeTCo4qlqpFl1J08exoTq0w8w
     'provider.google.api_libraries': '',
     'provider.google.map.type': 'ROADMAP',
 }
