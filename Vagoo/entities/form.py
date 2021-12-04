@@ -19,6 +19,7 @@ class MovieCreateForm(forms.ModelForm):
 
 class BookCreateForm(forms.ModelForm):
     class Meta:
+        model = Book
         fields = '__all__'
 
     def clean_isbn(self):

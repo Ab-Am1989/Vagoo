@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Book Create Form</title>
+    </head>
+    <body>
+        <form action="." method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">اضافه کردن کتاب جدید</button>
+        </form>
+    </body>
+</html>

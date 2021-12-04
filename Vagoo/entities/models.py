@@ -137,6 +137,9 @@ class Book(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('entities:books_details', args=[self.id])
+
 
 class Song(models.Model):
     class Meta:
