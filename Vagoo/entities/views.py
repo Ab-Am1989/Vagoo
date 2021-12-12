@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, CreateView, ListView
 from .models import Movie, Book, Theater, Song, Journey
-from .form import MovieCreateForm, BookCreateForm
+from .form import MovieCreateForm, BookCreateForm, TheaterCreateForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 
@@ -12,7 +12,6 @@ class MovieCreate(CreateView):
     model = Movie
     template_name = 'entities/movie_create.html'
     form_class = MovieCreateForm
-    context_object_name = 'create_form'
 
 
 class MovieShowList(ListView):
@@ -47,4 +46,17 @@ class BookShowDetails(DetailView):
 
 class TheaterCreate(CreateView):
     model = Theater
-    fields = ['name', 'director', 'genre', 'image']
+    template_name = 'entities/theater_create.html'
+    form_class = TheaterCreateForm
+
+
+class TheaterShowList(ListView):
+    model = Theater
+    template_name = 'entities/theater_list.html'
+    context_object_name = 'theaters'
+
+
+class TheaterShowDetails(DetailView):
+    model = Theater
+    template_name = 'entities/theater_details.html'
+    context_object_name = 'theater_details'

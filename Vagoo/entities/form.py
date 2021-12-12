@@ -32,6 +32,7 @@ class BookCreateForm(forms.ModelForm):
 
 class TheaterCreateForm(forms.ModelForm):
     class Meta:
+        model = Theater
         fields = '__all__'
 
     def clean(self):
@@ -39,7 +40,7 @@ class TheaterCreateForm(forms.ModelForm):
         director = self.cleaned_data.get('director')
         scriptwriter = self.cleaned_data.get('scriptwriter')
 
-        if Theater.objects.filter(Q(name__contains=name) & Q(director=director) & Q(yscriptwriterear=scriptwriter)):
+        if Theater.objects.filter(Q(name__contains=name) & Q(director=director) & Q(scriptwriter=scriptwriter)):
             return forms.ValidationError('This theater has been added to our library yet!')
 
 

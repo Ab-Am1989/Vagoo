@@ -7,6 +7,10 @@ from django.urls import reverse
 import pycountry
 
 
+# Future options:
+# * Add User who add an entity to database
+
+
 def year_choices():
     return [(r, r) for r in range(1884, datetime.date.today().year + 1)]
 
@@ -157,6 +161,9 @@ class Song(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('entities:songs_details', args=[self.id])
+
 
 class Theater(models.Model):
     class Meta:
@@ -172,6 +179,9 @@ class Theater(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('entities:theaters_details', args=[self.id])
 
 
 class JourneyImages(models.Model):
