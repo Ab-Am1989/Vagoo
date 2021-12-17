@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Song</title>
+</head>
+<body>
+        <h1>Add An Attractive Song You Have Seen! </h1>
+        <form action="." method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">اضافه کردن ترانه جدید</button>
+        </form>
+</body>
+</html>

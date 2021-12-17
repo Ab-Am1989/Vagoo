@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import MovieCreate, MovieShowDetails, MovieShowList, BookCreate, BookShowList, BookShowDetails,\
-    TheaterCreate, TheaterShowList, TheaterShowDetails
+    TheaterCreate, TheaterShowList, TheaterShowDetails, SongCreate, SongShowList, SongShowDetails
 
 
 app_name = 'entities'
@@ -15,4 +15,7 @@ urlpatterns = [
     path('theaters/create/', TheaterCreate.as_view(), name='theaters_create'),
     path('theaters/list/', TheaterShowList.as_view(), name='theaters_list'),
     path('theaters/<int:pk>/', TheaterShowDetails.as_view(), name='theaters_details'),
+    path('songs/create/', SongCreate.as_view(), name='songs_create'),
+    path('songs/list/', SongShowList.as_view(), name='songs_list'),
+    path('songs/<int:pk>/', SongShowDetails.as_view(), name='songs_details'),
 ]

@@ -123,7 +123,7 @@ class Book(models.Model):
         (MYSTICISM, 'عرفان'),
         (RELIGION, 'دین'),
         (PSYCHOLOGY, 'روان‌شناسی'),
-        (SOCIOLOGY, 'جامعه‌نویسی'),
+        (SOCIOLOGY, 'جامعه‌شناسی'),
         (HUMANITIES, 'علوم‌انسانی'),
         (MEDICAL, 'پزشکی'),
         (PHILOSOPHY, 'فلسفه'),

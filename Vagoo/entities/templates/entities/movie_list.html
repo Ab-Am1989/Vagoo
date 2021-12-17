@@ -2,16 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Movies List</title>
 </head>
 <body>
-    <ul>
-    {% for movie in movies %}
-        <li>
-            {{ movie.name }}
-        </li>
-    {% endfor %}
-    </ul>
+    {% if movies %}
+        <ul>
+            {% for movie in movies %}
+                <li>
+                    <a href="{% url "entities:movies_details" pk=movie.id %}">
+                    {{ movie.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="{% url "entities:movies_create" %}" target="_blank"> اضافه کردن فیلم جدید </a>
 
 </body>
 </html>

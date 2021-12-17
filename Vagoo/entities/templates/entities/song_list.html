@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Songs list</title>
+</head>
+<body>
+    {% if songs %}
+    <ul>
+        {% for song in songs %}
+            <li>
+                <a href="{% url "entities:songs_details" pk=song.id %}">
+                {{ song.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <a href="{% url "entities:songs_create" %}" target="_blank"> اضافه کردن موسیقی جدید </a>
+</body>
+</html>

@@ -2,16 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Books List</title>
 </head>
 <body>
-    <ul>
-    {% for book in books %}
-        <li>
-            {{ book.name }}
-        </li>
-    {% endfor %}
-    </ul>
+    {% if books %}
+        <ul>
+            {% for book in books %}
+                <li>
+                    <a href="{% url "entities:books_details" pk=book.id%}">
+                    {{ book.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="{% url "entities:books_create" %}" target="_blank"> اضافه کردن کتاب جدید </a>
 
 </body>
 </html>

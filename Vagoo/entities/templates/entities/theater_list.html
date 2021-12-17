@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Theaters list</title>
 </head>
 <body>
-    <ul>
-    {% for theater in theaters %}
-        <li>
-            {{ theater.name }}
-        </li>
-    {% endfor %}
-    </ul>
-
+    {% if theaters %}
+        <ul>
+            {% for theater in theaters %}
+                <li>
+                    <a href="{% url "entities:theaters_details" pk=theater.id %}">
+                    {{ theater.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="{% url "entities:theaters_create" %} " target="_blank">اضافه کردن تئاتر جدید</a>
 </body>
 </html>
