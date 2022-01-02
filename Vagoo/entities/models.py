@@ -208,9 +208,12 @@ class Journey(models.Model):
 
     title = models.CharField('عنوان', max_length=255)
     city = models.CharField('شهر', max_length=255)
-    location = PlainLocationField(based_fields=['city'], zoom=7)
+    location = PlainLocationField(based_fields=['city'], zoom=7, verbose_name='موقعیت جغرافیایی', null=True, blank=True)
     country = models.CharField('کشور', max_length=100)
     province = models.CharField('استان/ایالت', max_length=100)
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('entities:journeys_details', args=[self.id])

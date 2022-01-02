@@ -1,5 +1,7 @@
 from .models import Movie, Book, Theater, Song, Journey, JourneyImages
 from django import forms
+from django.contrib.gis import forms
+from location_field.forms.plain import PlainLocationField
 from django.db.models import Q
 from django.core.exceptions import ValidationError
 
@@ -66,6 +68,9 @@ class SongCreateForm(forms.ModelForm):
 
 
 class JourneyCreateForm(forms.ModelForm):
+    # location = forms.PointField()
+
     class Meta:
         model = Journey
-        fields = '__all__'
+        fields = ('title', 'city', 'location', 'country', 'province')
+

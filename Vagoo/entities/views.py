@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, CreateView, ListView
 from .models import Movie, Book, Theater, Song, Journey
-from .form import MovieCreateForm, BookCreateForm, TheaterCreateForm, SongCreateForm
+from .form import MovieCreateForm, BookCreateForm, TheaterCreateForm, SongCreateForm, JourneyCreateForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 
@@ -78,3 +78,21 @@ class SongShowDetails(DetailView):
     model = Song
     template_name = 'entities/song_details.html'
     context_object_name = 'song_details'
+
+
+class JourneyCreate(CreateView):
+    model = Journey
+    template_name = 'entities/journey_create.html'
+    form_class = JourneyCreateForm
+
+
+class JourneyShowList(ListView):
+    model = Journey
+    template_name = 'entities/journey_list.html'
+    context_object_name = 'journeys'
+
+
+class JourneyShowDetails(DetailView):
+    model = Journey
+    template_name = 'entities/journey_details.html'
+    context_object_name = 'journey_details'

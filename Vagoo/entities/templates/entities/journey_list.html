@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Journey List</title>
+</head>
+<body>
+    {% if journeys %}
+        <ul>
+            {% for journey in journeys %}
+                <li>
+                    <a href="{% url "entities:journeys_details" pk=journey.id%}">
+                    {{ journey.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="{% url "entities:journeys_create" %}" target="_blank"> اضافه کردن سفر جدید </a>
+
+</body>
+</html>
