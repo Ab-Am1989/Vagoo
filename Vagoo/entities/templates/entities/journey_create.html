@@ -12,6 +12,11 @@
 
     </head>
     <body>
+    {% if request.user.is_authenticated %}
+        <a href="{% url "accounts:logout" %}">خروج کاربر</a>
+    {% else %}
+        <a href="{% url "accounts:login" %}" }>ورود کاربر</a>
+    {% endif %}
 
 
         <h1>Map has not completed yet</h1>

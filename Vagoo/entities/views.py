@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, CreateView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Movie, Book, Theater, Song, Journey
 from .form import MovieCreateForm, BookCreateForm, TheaterCreateForm, SongCreateForm, JourneyCreateForm
 from django.http import HttpResponseRedirect
@@ -8,10 +9,11 @@ from django.urls import reverse_lazy, reverse
 
 # Create your views here.
 
-class MovieCreate(CreateView):
+class MovieCreate(LoginRequiredMixin, CreateView):
     model = Movie
     template_name = 'entities/movie_create.html'
     form_class = MovieCreateForm
+    login_url = 'accounts:login'
 
 
 class MovieShowList(ListView):
@@ -26,10 +28,11 @@ class MovieShowDetails(DetailView):
     context_object_name = 'movie_details'
 
 
-class BookCreate(CreateView):
+class BookCreate(LoginRequiredMixin, CreateView):
     model = Book
     template_name = 'entities/book_create.html'
     form_class = BookCreateForm
+    login_url = 'accounts:login'
 
 
 class BookShowList(ListView):
@@ -44,10 +47,11 @@ class BookShowDetails(DetailView):
     context_object_name = 'book_details'
 
 
-class TheaterCreate(CreateView):
+class TheaterCreate(LoginRequiredMixin, CreateView):
     model = Theater
     template_name = 'entities/theater_create.html'
     form_class = TheaterCreateForm
+    login_url = 'accounts:login'
 
 
 class TheaterShowList(ListView):
@@ -62,10 +66,11 @@ class TheaterShowDetails(DetailView):
     context_object_name = 'theater_details'
 
 
-class SongCreate(CreateView):
+class SongCreate(LoginRequiredMixin, CreateView):
     model = Song
     template_name = 'entities/song_create.html'
     form_class = SongCreateForm
+    login_url = 'accounts:login'
 
 
 class SongShowList(ListView):
@@ -80,7 +85,7 @@ class SongShowDetails(DetailView):
     context_object_name = 'song_details'
 
 
-class JourneyCreate(CreateView):
+class JourneyCreate(LoginRequiredMixin, CreateView):
     model = Journey
     template_name = 'entities/journey_create.html'
     form_class = JourneyCreateForm
