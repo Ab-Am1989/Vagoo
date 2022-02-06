@@ -7,7 +7,7 @@
         {% if request.user.is_authenticated %}
             <a href="{% url "accounts:logout" %}" >خروج کاربر</a>
         {% else %}
-            <a href="{% url "accounts:login" %}"}
+            <a href="{% url "accounts:login" %}"}>ورود به حساب کاربری</a>
         {% endif %}
         <form action="." method="POST">
             {% csrf_token %}

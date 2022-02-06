@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.username }} Profile</title>
+</head>
+<body style="text-align: right">
+<ul>
+    <li>نام کاربری:{{ user.username }}</li>
+    <li>نام و نام خانوادگی:{{ profile.user.get_full_name }}</li>
+    <li>تاریخ تولد:{{ profile.birth_date}}</li>
+    <li>شماره تلفن همراه:{{ profile.mobile }}</li>
+</ul>
+
+</body>
+</html>

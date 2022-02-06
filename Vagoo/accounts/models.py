@@ -1,16 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
+from django.urls import reverse
 from django.db.models import CASCADE
 
 
+# Create your models here.
 class Profile(models.Model):
     class Meta:
         verbose_name = 'نمایه کاربری'
         verbose_name_plural = 'نمایه کاربری'
 
     user = models.OneToOneField(User, on_delete=CASCADE, verbose_name='حساب کاربری/username')
-    mobile = models.CharField('تلفن همراه/Mobile', max_length=11)
+    mobile = models.CharField('تلفن همراه/Mobile', max_length=11, null=True, blank=True)
     MALE = 1
     FEMALE = 2
     OTHER = 3
@@ -19,7 +20,7 @@ class Profile(models.Model):
         (FEMALE, 'زن/Female'),
         (OTHER, 'سایر/Other'),
     }
-    gender = models.IntegerField('جنسیت/Gender', choices=GENDER_CHOICES)
+    gender = models.IntegerField('جنسیت/Gender', choices=GENDER_CHOICES, null=True, blank=True)
     birth_date = models.DateTimeField('تاریخ تولد/Birth date', null=True, blank=True)
     country = models.CharField('کشور/County', max_length=100, null=True, blank=True)
     city = models.CharField('شهر/City', max_length=100, null=True, blank=True)
@@ -43,3 +44,6 @@ class Profile(models.Model):
             return True
         else:
             return False
+
+    def get_absolute_url(self):
+        return reverse("accounts:profile_details")

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete your profile</title>
+</head>
+<body>
+     {% if request.user.is_authenticated %}
+            <a href="{% url "accounts:logout" %}" >خروج کاربر</a>
+        {% else %}
+             <a href="{% url "accounts:login" %}"}>ورود به حساب کاربری</a>
+        {% endif %}
+        <form action="." method="POST">
+            {% csrf_token %}
+            {% include "entities/_form_field.html" with field=form.mobile %}
+            {% include "entities/_form_field.html" with field=form.gender %}
+            {% include "entities/_form_field.html" with field=form.birth_date %}
+            {% include "entities/_form_field.html" with field=form.city %}
+            {% include "entities/_form_field.html" with field=form.country %}
+            {% include "entities/_form_field.html" with field=form.profile_image %}
+
+            <button type="submit">به‌روزرسانی حساب کاربری</button>
+        </form>
+</body>
+</html>
